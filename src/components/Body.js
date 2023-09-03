@@ -20,6 +20,15 @@ const Body = () => {
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  if (listOfRestaurants.length === 0) {
+    return (
+      <div className="spinner-container">
+        <div className="loading-spinner"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="body">
       <div className="filter">
