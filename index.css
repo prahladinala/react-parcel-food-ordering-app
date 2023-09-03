@@ -1,0 +1,91 @@
+* {
+  font: #ce2627;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+.logo {
+  max-width: 220px;
+}
+.nav-items {
+  padding: 0px 20px;
+}
+.nav-items > ul {
+  font-size: 24px;
+  display: flex;
+  list-style-type: none;
+}
+.nav-items > ul > li {
+  padding: 10px;
+  margin: 10px;
+}
+.res-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+.res-card {
+  padding: 5px;
+  margin: 5px;
+  width: 200px;
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+}
+.res-card:hover {
+  background-color: #ce2627 !important;
+  color: #ffffff;
+  border: 1px solid #ce2627;
+  cursor: pointer;
+}
+.search {
+  padding: 10px;
+}
+.res-logo {
+  width: 100%;
+  border-radius: 10px;
+  min-height: 150px;
+  max-height: 150px;
+}
+.res-card h4 {
+  margin: 2px;
+}
+.resLink {
+  background-color: #ffffff;
+  color: #ce2627;
+  text-decoration: none;
+}
+.resLink {
+  width: 100%;
+  background-color: #ce2627;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.resLink:hover,
+.resLink:focus {
+  background-color: #ffffff;
+  color: #ce2627;
+}
