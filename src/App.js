@@ -1,25 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { Heading } from "./components/Header";
-import logo from "../logo-v.png";
-
-const Heading = () => {
-  return (
-    <div className="header">
-      <div className="logo-container">
-        <img className="logo" src={logo} />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About</li>
-          <li>Contact</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
+import Heading from "./components/Header";
 
 const RestaurantCard = (props) => {
   // console.log(props) // JS Object
