@@ -1,5 +1,6 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
+import Spinner from "./Spinner";
 
 const Body = () => {
   // Local State Variable - Super Powerful Variable - React HOOKs(Normal JS Function given by react - Utility Function Given by React) - useState
@@ -22,11 +23,7 @@ const Body = () => {
   };
 
   if (listOfRestaurants.length === 0) {
-    return (
-      <div className="spinner-container">
-        <div className="loading-spinner"></div>
-      </div>
-    );
+    return <Spinner />;
   }
 
   return (
