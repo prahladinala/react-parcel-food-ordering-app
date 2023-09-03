@@ -1,11 +1,16 @@
 import RestaurantCard from "./RestaurantCard";
 import resList from "../utils/mockData";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Body = () => {
   // Local State Variable - Super Powerful Variable - React HOOKs(Normal JS Function given by react - Utility Function Given by React) - useState
   const [listOfRestaurants, setListOfRestaurants] = useState(resList);
 
+  useEffect(() => {
+    console.log("useEffect called - after Body component is rendered/loaded"); // Then at last it is called
+  }, []);
+
+  console.log("Body Rendered"); // First Called
   return (
     <div className="body">
       <div className="filter">
