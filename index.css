@@ -38,6 +38,10 @@
   border: 1px solid #ce2627;
   cursor: pointer;
 }
+.res-card:hover .resLink {
+  background-color: #ffffff;
+  color: #ce2627;
+}
 .search {
   padding: 10px;
 }
@@ -78,7 +82,6 @@
   -webkit-user-select: none;
   touch-action: manipulation;
 }
-
 .resLink:hover,
 .resLink:focus {
   background-color: #ffffff;
