@@ -7,10 +7,20 @@ const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState(resList);
 
   useEffect(() => {
-    console.log("useEffect called - after Body component is rendered/loaded"); // Then at last it is called
+    fetchData();
   }, []);
 
-  console.log("Body Rendered"); // First Called
+  const fetchData = async () => {
+    // Fetch the Data
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4833526&lng=78.3870668&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    const json = await data.json();
+    console.log(json);
+    setListOfRestaurants(
+      json.data.cards[2].card.card.gridElements.infoWithStyle.restaurants
+    );
+  };
   return (
     <div className="body">
       <div className="filter">
