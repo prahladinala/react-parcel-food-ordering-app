@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Spinner from "./Spinner";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
   // Local State Variable - Super Powerful Variable - React HOOKs(Normal JS Function given by react - Utility Function Given by React) - useState
@@ -23,7 +24,7 @@ const Body = () => {
   };
 
   if (listOfRestaurants.length === 0) {
-    return <Spinner />;
+    return <Shimmer />;
   }
 
   return (
