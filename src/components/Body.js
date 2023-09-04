@@ -5,7 +5,9 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   // Local State Variable - Super Powerful Variable - React HOOKs(Normal JS Function given by react - Utility Function Given by React) - useState
+  // Whenever state variables update, react triggers a reconciliation cycle (re-renders the component)
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
@@ -20,11 +22,14 @@ const Body = () => {
     const json = await data.json();
     console.log(json);
     setListOfRestaurants(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRestaurant(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
-  return listOfRestaurants?.length === 0 ? (
+  return filteredRestaurant?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -34,17 +39,20 @@ const Body = () => {
             type="text"
             placeholder="Restaurants"
             className="search-box"
+            value={searchText}
             onChange={(e) => {
               setSearchText(e.target.value);
             }}
-            value={searchText}
           />
           <button
             className="resLink"
             onClick={() => {
               // Filter Restaurant Cards and Update UI
-              // Get Search Text
               console.log(searchText);
+              const filteredList = filteredRestaurant.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setFilteredRestaurant(filteredList);
             }}
           >
             Search
@@ -56,7 +64,7 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             // Filter Logic ⇢ Show All Restaurants
-            fetchData();
+            setFilteredRestaurant(listOfRestaurants);
           }}
         >
           All Restaurants
@@ -65,10 +73,10 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             // Filter Logic ⇢ Filter Top Rated Restaurants (More than 4 Rating)
-            const filteredList = listOfRestaurants?.filter(
+            const filteredList = filteredRestaurant?.filter(
               (res) => res.info.avgRating >= 4
             );
-            setListOfRestaurants(filteredList);
+            setFilteredRestaurant(filteredList);
             console.log(filteredList);
           }}
         >
@@ -78,8 +86,8 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             // Filter Login ⇢ Filter Restaurants Near Me (Less than 2KM)
-            setListOfRestaurants(
-              listOfRestaurants?.filter(
+            setFilteredRestaurant(
+              filteredRestaurant?.filter(
                 (res) => res.info.sla.lastMileTravel < 2
               )
             );
@@ -91,8 +99,8 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             // Filter Login ⇢ Filter Restaurants has Specific cuisines (Bakery Items)
-            setListOfRestaurants(
-              listOfRestaurants?.filter((res) =>
+            setFilteredRestaurant(
+              filteredRestaurant?.filter((res) =>
                 res.info.cuisines.includes("Bakery")
               )
             );
@@ -104,17 +112,19 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             // Filter Login ⇢ Filter Restaurants Deliverys fast (Less than 30 min)
-            setListOfRestaurants(
-              listOfRestaurants?.filter((res) => res.info.sla.deliveryTime < 30)
+            setFilteredRestaurant(
+              filteredRestaurant?.filter(
+                (res) => res.info.sla.deliveryTime < 30
+              )
             );
-            console.log(listOfRestaurants);
+            console.log(filteredRestaurant);
           }}
         >
           Fast Delivery 🚀
         </button>
       </div>
       <div className="res-container">
-        {listOfRestaurants?.map((restaurant) => (
+        {filteredRestaurant?.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
