@@ -18,6 +18,7 @@
   font-size: 24px;
   display: flex;
   list-style-type: none;
+  align-items: center;
 }
 .nav-items > ul > li {
   padding: 10px;
@@ -61,7 +62,7 @@
   width: 100%;
   background-color: #ce2627;
   border-radius: 8px;
-  border-style: none;
+  border: 1px solid #ffffff;
   box-sizing: border-box;
   color: #ffffff;
   cursor: pointer;
@@ -82,11 +83,13 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  cursor: pointer;
 }
 .resLink:hover,
 .resLink:focus {
   background-color: #ffffff;
   color: #ce2627;
+  border: 1px solid #ce2627;
 }
 .res-title {
   overflow: hidden;

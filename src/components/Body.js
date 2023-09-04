@@ -19,7 +19,7 @@ const Body = () => {
     const json = await data.json();
     console.log(json);
     setListOfRestaurants(
-      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -32,7 +32,7 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             // Filter Logic ⇢ Show All Restaurants
-            setListOfRestaurants(resList);
+            fetchData();
           }}
         >
           All Restaurants
@@ -41,7 +41,6 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             // Filter Logic ⇢ Filter Top Rated Restaurants (More than 4 Rating)
-            setListOfRestaurants(resList);
             const filteredList = listOfRestaurants?.filter(
               (res) => res.info.avgRating >= 4
             );
@@ -55,7 +54,6 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             // Filter Login ⇢ Filter Restaurants Near Me (Less than 2KM)
-            setListOfRestaurants(resList);
             setListOfRestaurants(
               listOfRestaurants?.filter(
                 (res) => res.info.sla.lastMileTravel < 2
@@ -69,7 +67,6 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             // Filter Login ⇢ Filter Restaurants has Specific cuisines (Bakery Items)
-            setListOfRestaurants(resList);
             setListOfRestaurants(
               listOfRestaurants?.filter((res) =>
                 res.info.cuisines.includes("Bakery")
@@ -83,7 +80,6 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             // Filter Login ⇢ Filter Restaurants Deliverys fast (Less than 30 min)
-            setListOfRestaurants(resList);
             setListOfRestaurants(
               listOfRestaurants?.filter((res) => res.info.sla.deliveryTime < 30)
             );
