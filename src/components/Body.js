@@ -19,15 +19,11 @@ const Body = () => {
     const json = await data.json();
     console.log(json);
     setListOfRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
-  // if (listOfRestaurants.length === 0) {
-  //   return <Shimmer />;
-  // }
-
-  return listOfRestaurants.length === 0 ? (
+  return listOfRestaurants?.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -46,7 +42,7 @@ const Body = () => {
           onClick={() => {
             // Filter Logic ⇢ Filter Top Rated Restaurants (More than 4 Rating)
             setListOfRestaurants(resList);
-            const filteredList = listOfRestaurants.filter(
+            const filteredList = listOfRestaurants?.filter(
               (res) => res.info.avgRating >= 4
             );
             setListOfRestaurants(filteredList);
@@ -61,7 +57,9 @@ const Body = () => {
             // Filter Login ⇢ Filter Restaurants Near Me (Less than 2KM)
             setListOfRestaurants(resList);
             setListOfRestaurants(
-              listOfRestaurants.filter((res) => res.info.sla.lastMileTravel < 2)
+              listOfRestaurants?.filter(
+                (res) => res.info.sla.lastMileTravel < 2
+              )
             );
           }}
         >
@@ -73,7 +71,7 @@ const Body = () => {
             // Filter Login ⇢ Filter Restaurants has Specific cuisines (Bakery Items)
             setListOfRestaurants(resList);
             setListOfRestaurants(
-              listOfRestaurants.filter((res) =>
+              listOfRestaurants?.filter((res) =>
                 res.info.cuisines.includes("Bakery")
               )
             );
@@ -87,7 +85,7 @@ const Body = () => {
             // Filter Login ⇢ Filter Restaurants Deliverys fast (Less than 30 min)
             setListOfRestaurants(resList);
             setListOfRestaurants(
-              listOfRestaurants.filter((res) => res.info.sla.deliveryTime < 30)
+              listOfRestaurants?.filter((res) => res.info.sla.deliveryTime < 30)
             );
             console.log(listOfRestaurants);
           }}
@@ -96,7 +94,7 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {listOfRestaurants.map((restaurant) => (
+        {listOfRestaurants?.map((restaurant) => (
           <RestaurantCard key={restaurant.info.id} resData={restaurant} />
         ))}
       </div>
