@@ -59,7 +59,6 @@
 }
 /* RESTAURANT ORDER NOW BTN CSS */
 .resLink {
-  width: 100%;
   background-color: #ce2627;
   border-radius: 8px;
   border: 1px solid #ffffff;
@@ -84,6 +83,9 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   cursor: pointer;
+}
+.full-width {
+  width: 100%;
 }
 .resLink:hover,
 .resLink:focus {
@@ -224,4 +226,17 @@
 }
 .m-t-24 {
   margin-top: 24px;
+}
+/* SEARCH BOX */
+.search-box {
+  border: 1px solid #ce2627;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ce2627;
+  min-width: 70%;
+}
+.search-box:focus {
+  border: 1px solid #ce2627;
 }

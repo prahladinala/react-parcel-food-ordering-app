@@ -15,7 +15,7 @@ const RestaurantCard = (props) => {
         🚀 {sla.deliveryTime} Mins - 📍 <span>{sla.lastMileTravel} KMs</span>
       </h4>
       <h4>✌️ {costForTwo}</h4>
-      <a className="resLink" href={resData.cta.link} target="_blank">
+      <a className="resLink full-width" href={resData.cta.link} target="_blank">
         Order Now ⇢
       </a>
     </div>

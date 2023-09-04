@@ -6,6 +6,7 @@ import Shimmer from "./Shimmer";
 const Body = () => {
   // Local State Variable - Super Powerful Variable - React HOOKs(Normal JS Function given by react - Utility Function Given by React) - useState
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -19,7 +20,7 @@ const Body = () => {
     const json = await data.json();
     console.log(json);
     setListOfRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -27,6 +28,29 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
+      <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Restaurants"
+            className="search-box"
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+            value={searchText}
+          />
+          <button
+            className="resLink"
+            onClick={() => {
+              // Filter Restaurant Cards and Update UI
+              // Get Search Text
+              console.log(searchText);
+            }}
+          >
+            Search
+          </button>
+        </div>
+      </div>
       <div className="filter">
         <button
           className="filter-btn"
