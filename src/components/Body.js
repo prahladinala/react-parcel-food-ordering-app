@@ -22,10 +22,10 @@ const Body = () => {
     const json = await data.json();
     console.log(json);
     setListOfRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -49,10 +49,14 @@ const Body = () => {
             onClick={() => {
               // Filter Restaurant Cards and Update UI
               console.log(searchText);
-              const filteredList = filteredRestaurant.filter((res) =>
+              setFilteredRestaurant(listOfRestaurants);
+              const filteredList = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
               setFilteredRestaurant(filteredList);
+              if (searchText === "") {
+                setFilteredRestaurant(listOfRestaurants);
+              }
             }}
           >
             Search
@@ -73,7 +77,8 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             // Filter Logic ⇢ Filter Top Rated Restaurants (More than 4 Rating)
-            const filteredList = filteredRestaurant?.filter(
+            setFilteredRestaurant(listOfRestaurants);
+            const filteredList = listOfRestaurants?.filter(
               (res) => res.info.avgRating >= 4
             );
             setFilteredRestaurant(filteredList);
@@ -86,8 +91,9 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             // Filter Login ⇢ Filter Restaurants Near Me (Less than 2KM)
+            setFilteredRestaurant(listOfRestaurants);
             setFilteredRestaurant(
-              filteredRestaurant?.filter(
+              listOfRestaurants?.filter(
                 (res) => res.info.sla.lastMileTravel < 2
               )
             );
@@ -99,8 +105,9 @@ const Body = () => {
           className="filter-btn"
           onClick={() => {
             // Filter Login ⇢ Filter Restaurants has Specific cuisines (Bakery Items)
+            setFilteredRestaurant(listOfRestaurants);
             setFilteredRestaurant(
-              filteredRestaurant?.filter((res) =>
+              listOfRestaurants?.filter((res) =>
                 res.info.cuisines.includes("Bakery")
               )
             );
@@ -111,11 +118,10 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
-            // Filter Login ⇢ Filter Restaurants Deliverys fast (Less than 30 min)
+            // Filter Fast Delivery ⇢ Filter Restaurants Deliverys fast (Less than 30 min)
+            setFilteredRestaurant(listOfRestaurants);
             setFilteredRestaurant(
-              filteredRestaurant?.filter(
-                (res) => res.info.sla.deliveryTime < 30
-              )
+              listOfRestaurants?.filter((res) => res.info.sla.deliveryTime < 30)
             );
             console.log(filteredRestaurant);
           }}
