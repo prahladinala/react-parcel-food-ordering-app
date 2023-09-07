@@ -277,3 +277,8 @@
     max-width: 1320px;
   }
 }
+/* NO LINK */
+.nolink {
+  color: inherit;
+  text-decoration: none;
+}

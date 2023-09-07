@@ -141,4 +141,55 @@ useEffect(() => {
 #### React Router DOM
 
 - Before creating a routing, we need to do routing configuration @`App.js`
-- `/about`
+- Routes Required
+
+  - Home - `/`
+  - About - `/about`
+  - Contact - `/contact`
+  - Error Page - 404
+
+- Outlet
+
+```
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+```
+
+```
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    children: [
+      {
+        path: "/",
+        element: <Body />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
+    errorElement: <Error />,
+  },
+]);
+```
+
+```
+root.render(<RouterProvider router={appRouter} />);
+```
+
+#### Routing Methods
+
+1. Client Side Routing
+
+   - No Network Calls - Check in Inspect > Network
+   - allows your app to update the URL from a link click without making another request for another document from the server
+
+2. Server Side Routing
+   - It is the traditional way of handling routes in web applications.
+   - When a user clicks a link, the server requests a new page or data from another computer.
+   - The old page is discarded and the HTML of the new page is loaded.
