@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../logo-v.png";
 
 const Heading = () => {
-  let btnName = "Login";
   const [btnNameReact, setBtnNameReact] = useState("Login");
+
   return (
     <div className="header">
       <div className="logo-container">
