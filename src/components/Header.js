@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import logo from "../logo-v.png";
-import { Link } from "react-router-dom";
 
 const Heading = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
