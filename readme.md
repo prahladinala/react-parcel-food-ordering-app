@@ -4,9 +4,10 @@
 
 ### Tech Used
 
-- React
+- React `v18`
 - Babel
 - Parcel
+- React Router DOM `v6.15`
 
 ### Parcel Features
 
@@ -136,3 +137,8 @@ useEffect(() => {
 ```
 
 - useEffect is called everytime btnNameReact get updated
+
+#### React Router DOM
+
+- Before creating a routing, we need to do routing configuration @`App.js`
+- `/about`
